@@ -4,6 +4,8 @@
 
 1. **CLAUSES**
    1. **WHERE** - The **WHERE** clause is used to grab certain rows and also to do mathematical comparisons:
-      1. `SELECT population FROM world WHERE name = 'Germany';`
-      2. `SELECT name FROM world WHERE population > 1000000;`
-    3. 
+       1. `SELECT population FROM world WHERE name = 'Germany';`
+       2. `SELECT name FROM world WHERE population > 1000000;`
+   2. **IN** -  The **IN** clause allows us to check if an item is in a list:
+       1. `SELECT name, population FROM world WHERE name IN ('Brazil', 'Russia', 'India', 'China');`
+       2. `SELECT name, population, area FROM world WHERE name IN ('Japan', 'United States');`
