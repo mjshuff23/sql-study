@@ -20,3 +20,10 @@
    1. **LENGTH** - LENGTH(s) returns the number of characters in string s.
       1. `SELECT LENGTH(name), name FROM bbc;`
       2. `LENGTH('Hello')` -> `5`
+      3. `SELECT name, length(name) FROM world WHERE length(name)=5 and region='Europe';`
+3. **OTHER**
+   1. Mathematical operations can also be done in your queries:
+      1. `SELECT name, area*2 FROM world WHERE population = 64000;`
+      2. `SELECT name, population/area FROM world WHERE name IN ('China', 'Nigeria', 'France', 'Australia');`
+   2. We can also combine conditionals:
+      1. `SELECT name, area, population FROM world WHERE area > 50000 AND population < 1000000;`
