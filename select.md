@@ -21,7 +21,17 @@
       1. `SELECT LENGTH(name), name FROM bbc;`
       2. `LENGTH('Hello')` -> `5`
       3. `SELECT name, length(name) FROM world WHERE length(name)=5 and region='Europe';`
-3. **OTHER**
+   2. **ROUND** - `ROUND(f,p)` returns `f` rounded to `p` decimal places
+      1. `SELECT name, ROUND(population/1000000,1) FROM bbc;`
+      2. `SELECT name, ROUND(population/1000000, 2), ROUND(GDP/1000000000, 2) FROM world WHERE continent = 'South America';`
+3. **LOGICAL OPERATORS** 
+   1. **AND** - used if BOTH comparisons must be true
+      1. `SELECT name, area, population FROM world WHERE area > 50000 AND population < 1000000;`
+   2. **OR** - used if ONE comparison must be true
+      1. `SELECT name FROM world WHERE name LIKE '%a' OR name LIKE '%l';`
+   3. **XOR** - used if ONE comparison must be true *BUT NOT BOTH*
+      1. `SELECT name, population, area FROM world WHERE area > 3000000 XOR population > 250000000;`
+4. **OTHER**
    1. Mathematical operations can also be done in your queries:
       1. `SELECT name, area*2 FROM world WHERE population = 64000;`
       2. `SELECT name, population/area FROM world WHERE name IN ('China', 'Nigeria', 'France', 'Australia');`
