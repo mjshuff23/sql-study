@@ -36,6 +36,12 @@
    4. `<=` - Less than or equal to
    5. `>=` - Greater than or equal to
    6. `<>` - Compare inequality
+   7. `LIKE` - Compare characters, spaces, etcetera using `%`
+      1. If it starts with `%` and has characters after, it means "ENDS WITH"
+      2. If it ends with `%` after characters, it means "STARTS WITH"
+      3. If it has a `%` before AND after a character (`%a%`) it means "ANYWHERE IN"
+   8. `NOT LIKE` - Compare characters, spaces, etcetera using `%`
+      1. Opposite of `LIKE` 
 4. **LOGICAL OPERATORS**
    1. **AND** - used if BOTH comparisons must be true
       1. `SELECT name, area, population FROM world WHERE area > 50000 AND population < 1000000;`
