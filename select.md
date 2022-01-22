@@ -16,6 +16,10 @@
          1. `SELECT name FROM bbc WHERE name LIKE 'Z%';`
       2. Select the code which shows the countries that end in A or L:
          1. `SELECT name FROM world WHERE name LIKE '%a' OR name LIKE '%l';`
+   5. **NOT LIKE** - Compare characters, spaces, etcetera using `%`
+      1. Opposite of `LIKE`
+   6. **AS** - Used to rename a column when querying
+      1. `SELECT name, CONCAT(ROUND(100*population/(SELECT population FROM world WHERE name='Germany'), 0), '%') AS percentage FROM world WHERE continent='Europe';`
 2. **FUNCTIONS**
    1. **LENGTH** - `LENGTH(s)` returns the number of characters in string s.
       1. `SELECT LENGTH(name), name FROM bbc;`
@@ -29,13 +33,16 @@
    3. **LEFT** - `LEFT(s, n)` allows you to extract `n` characters from the start of the string `s`
        1. `SELECT name, LEFT(name, 3) FROM bbc;`
        2. `SELECT name, capital FROM world WHERE LEFT(name, 1) = LEFT(capital, 1) AND name <> capital;`
+   4. **CONCAT** - `CONCAT(s1, s2, ...)` is used to concatenate(add) 2 or more strings together
+      1. `SELECT CONCAT(region,name) FROM bbc`
+   5. **MAX** - Finds the highest values in a column or part of a column 
 3. **COMPARISON OPERATORS**
    1. `=` - Compare equality
    2. `<` - Less than
    3. `>` - Greater than
    4. `<=` - Less than or equal to
    5. `>=` - Greater than or equal to
-   6. `<>` - Compare inequality
+   6. `<>` OR `!=` - Compare inequality
    7. `LIKE` - Compare characters, spaces, etcetera using `%`
       1. If it starts with `%` and has characters after, it means "ENDS WITH"
       2. If it ends with `%` after characters, it means "STARTS WITH"
@@ -55,3 +62,6 @@
       2. `SELECT name, population/area FROM world WHERE name IN ('China', 'Nigeria', 'France', 'Australia');`
    2. We can also combine conditionals:
       1. `SELECT name, area, population FROM world WHERE area > 50000 AND population < 1000000;`
+   3. **SELECT WITHIN SELECT** - We can use SELECT within another SELECT to be more precise:
+      1. `SELECT name FROM world WHERE population > (SELECT population FROM world WHERE name='Russia');`
+      2. 
