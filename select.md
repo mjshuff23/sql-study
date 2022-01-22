@@ -17,21 +17,33 @@
       2. Select the code which shows the countries that end in A or L:
          1. `SELECT name FROM world WHERE name LIKE '%a' OR name LIKE '%l';`
 2. **FUNCTIONS**
-   1. **LENGTH** - LENGTH(s) returns the number of characters in string s.
+   1. **LENGTH** - `LENGTH(s)` returns the number of characters in string s.
       1. `SELECT LENGTH(name), name FROM bbc;`
       2. `LENGTH('Hello')` -> `5`
       3. `SELECT name, length(name) FROM world WHERE length(name)=5 and region='Europe';`
+      4. `SELECT name, capital FROM world WHERE LENGTH(name) = LENGTH(capital)`
    2. **ROUND** - `ROUND(f,p)` returns `f` rounded to `p` decimal places
       1. `SELECT name, ROUND(population/1000000,1) FROM bbc;`
       2. `SELECT name, ROUND(population/1000000, 2), ROUND(GDP/1000000000, 2) FROM world WHERE continent = 'South America';`
-3. **LOGICAL OPERATORS** 
+      3. `SELECT name, ROUND(gdp/population, -3) FROM world WHERE gdp > 1000000000000`
+   3. **LEFT** - `LEFT(s, n)` allows you to extract `n` characters from the start of the string `s`
+       1. `SELECT name, LEFT(name, 3) FROM bbc;`
+       2. `SELECT name, capital FROM world WHERE LEFT(name, 1) = LEFT(capital, 1) AND name <> capital;`
+3. **COMPARISON OPERATORS**
+   1. `=` - Compare equality
+   2. `<` - Less than
+   3. `>` - Greater than
+   4. `<=` - Less than or equal to
+   5. `>=` - Greater than or equal to
+   6. `<>` - Compare inequality
+4. **LOGICAL OPERATORS**
    1. **AND** - used if BOTH comparisons must be true
       1. `SELECT name, area, population FROM world WHERE area > 50000 AND population < 1000000;`
    2. **OR** - used if ONE comparison must be true
       1. `SELECT name FROM world WHERE name LIKE '%a' OR name LIKE '%l';`
    3. **XOR** - used if ONE comparison must be true *BUT NOT BOTH*
-      1. `SELECT name, population, area FROM world WHERE area > 3000000 XOR population > 250000000;`
-4. **OTHER**
+      1. `SELECT name, population, area FROM world WHERE area > 3000000 XOR population > 250000000;` 
+5. **OTHER**
    1. Mathematical operations can also be done in your queries:
       1. `SELECT name, area*2 FROM world WHERE population = 64000;`
       2. `SELECT name, population/area FROM world WHERE name IN ('China', 'Nigeria', 'France', 'Australia');`
