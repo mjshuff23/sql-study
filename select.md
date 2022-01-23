@@ -20,22 +20,27 @@
       1. Opposite of `LIKE`
    6. **AS** - Used to rename a column when querying
       1. `SELECT name, CONCAT(ROUND(100*population/(SELECT population FROM world WHERE name='Germany'), 0), '%') AS percentage FROM world WHERE continent='Europe';`
+   7. **GROUP BY** -  
 2. **FUNCTIONS**
-   1. **LENGTH** - `LENGTH(s)` returns the number of characters in string s.
+   1. **AGGREGATE FUNCTIONS** - An aggregate function takes many values and delivers just one value. For example the function SUM would aggregate the values 2, 4 and 5 to deliver the single value 11.
+   2. **LENGTH** - `LENGTH(s)` returns the number of characters in string s.
       1. `SELECT LENGTH(name), name FROM bbc;`
       2. `LENGTH('Hello')` -> `5`
       3. `SELECT name, length(name) FROM world WHERE length(name)=5 and region='Europe';`
       4. `SELECT name, capital FROM world WHERE LENGTH(name) = LENGTH(capital)`
-   2. **ROUND** - `ROUND(f,p)` returns `f` rounded to `p` decimal places
+   3. **ROUND** - `ROUND(f,p)` returns `f` rounded to `p` decimal places
       1. `SELECT name, ROUND(population/1000000,1) FROM bbc;`
       2. `SELECT name, ROUND(population/1000000, 2), ROUND(GDP/1000000000, 2) FROM world WHERE continent = 'South America';`
       3. `SELECT name, ROUND(gdp/population, -3) FROM world WHERE gdp > 1000000000000`
-   3. **LEFT** - `LEFT(s, n)` allows you to extract `n` characters from the start of the string `s`
+   4. **LEFT** - `LEFT(s, n)` allows you to extract `n` characters from the start of the string `s`
        1. `SELECT name, LEFT(name, 3) FROM bbc;`
        2. `SELECT name, capital FROM world WHERE LEFT(name, 1) = LEFT(capital, 1) AND name <> capital;`
-   4. **CONCAT** - `CONCAT(s1, s2, ...)` is used to concatenate(add) 2 or more strings together
+   5. **CONCAT** - `CONCAT(s1, s2, ...)` is used to concatenate(add) 2 or more strings together
       1. `SELECT CONCAT(region,name) FROM bbc`
-   5. **MAX** - Finds the highest values in a column or part of a column 
+   6. **MAX** - Finds the highest values in a column or part of a column
+   7. **ALL** - ALL is used to select all records of a SELECT STATEMENT. It compares a value to every value in a list or results from a query. The ALL must be preceded by the comparison operators and evaluates to TRUE if the query returns no rows. For example, ALL means greater than every value, means greater than the maximum value. Suppose ALL (1, 2, 3) means greater than 3.
+   8. **COUNT** - Total count of rows
+   9. **DISTINCT** - Removes duplicates
 3. **COMPARISON OPERATORS**
    1. `=` - Compare equality
    2. `<` - Less than
