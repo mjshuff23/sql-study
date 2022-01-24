@@ -20,7 +20,8 @@
       1. Opposite of `LIKE`
    6. **AS** - Used to rename a column when querying
       1. `SELECT name, CONCAT(ROUND(100*population/(SELECT population FROM world WHERE name='Germany'), 0), '%') AS percentage FROM world WHERE continent='Europe';`
-   7. **GROUP BY** -  
+   7. **GROUP BY**
+   8. **DISTINCT** - Removes duplicates
 2. **FUNCTIONS**
    1. **AGGREGATE FUNCTIONS** - An aggregate function takes many values and delivers just one value. For example the function SUM would aggregate the values 2, 4 and 5 to deliver the single value 11.
    2. **LENGTH** - `LENGTH(s)` returns the number of characters in string s.
@@ -40,7 +41,7 @@
    6. **MAX** - Finds the highest values in a column or part of a column
    7. **ALL** - ALL is used to select all records of a SELECT STATEMENT. It compares a value to every value in a list or results from a query. The ALL must be preceded by the comparison operators and evaluates to TRUE if the query returns no rows. For example, ALL means greater than every value, means greater than the maximum value. Suppose ALL (1, 2, 3) means greater than 3.
    8. **COUNT** - Total count of rows
-   9. **DISTINCT** - Removes duplicates
+   9. **COALESCE** - takes any number of arguments and returns the first value that is not null.
 3. **COMPARISON OPERATORS**
    1. `=` - Compare equality
    2. `<` - Less than
@@ -69,4 +70,5 @@
       1. `SELECT name, area, population FROM world WHERE area > 50000 AND population < 1000000;`
    3. **SELECT WITHIN SELECT** - We can use SELECT within another SELECT to be more precise:
       1. `SELECT name FROM world WHERE population > (SELECT population FROM world WHERE name='Russia');`
-      2. 
+   4. **NULL** - Sometimes NULL values are given in tables, maybe because the data is unknown or inappropriate
+      1. We can use the phrase `IS NULL` to pick out fields. We can use `IS NOT NULL` similarly.
